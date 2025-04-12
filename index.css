@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #d5fcd2;
+    color: #333;
+  }
+  
+  .navbar {
+    background-color: #2f5131;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .hero {
+    background: url('./PPP/indexhero.jpg') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 40px;
+    color: white;
+    text-shadow: 1px 1px 4px #000;
+  }
+  
+  .hero h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-top: 10px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .why-us {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: row;  /* row direction to align side by side */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;             /* spacing between image and text */
+    flex-wrap: wrap;       /* ensures responsiveness on smaller screens */
+    text-align: left;
+  }
+  
+  
+  .why-us img {
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    margin-right: 100px;
+  }
+  
+  .why-text {
+    max-width: 600px;
+  }  
+  
+  .why-text h2 {
+    margin-bottom: 20px;
+  }
+  
+  .why-text ul {
+    list-style-type: disc;
+    text-align: left;
+    max-width: 600px;
+  }
+  
+  .testimonials {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+  
+  .testimonial-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .testimonial-card .avatar {
+    width: 60px;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+  }
+  
+  .feedback {
+    background-color: #e4f8df;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-container {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .form-container button {
+    background-color: #3f6b36;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .feedback-image img {
+    width: 250px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  footer {
+    background-color: #2f5131;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logo img {
+    width: 50px;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin: 5px 0;
+  }
+  
