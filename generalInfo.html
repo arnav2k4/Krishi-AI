@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crop Info</title>
+  <link rel="stylesheet" href="generalInfo.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+          <img src="./PPP/logo.png" alt="Krishi AI Logo">
+          <span>KRISHI AI</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="contactus.html">CONTACT US</a></li>
+            <li><a href="login.html">LOGIN</a></li>
+          </ul>
+        </nav>
+    </header>
+
+  
+  <div style = "padding-left: 20px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 0px;">
+  <label for="cropSelect" >Select a Crop:</label>
+  <select id="cropSelect">
+    <option value="">--Select crop name--</option>
+    <option value="WHEAT">WHEAT</option>
+    <option value="RICE">RICE</option>
+    <option value="COTTON">COTTON</option>
+    <option value="POTATO">POTATO</option>
+  </select>
+  </div>
+
+  <div id="cropContent" class="content"></div>
+
+  <script src="generalInfo.js"></script>
+</body>
+</html>
