@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Rotation Advisor</title>
+  <link rel="stylesheet" href="cropRotation.css">
+</head>
+<body>
+  <div class="container">
+    <h2>🌾 Crop Rotation Advisor</h2>
+
+    <label for="previousCrop">Previous Crop:</label>
+    <select id="previousCrop">
+      <option value="Rice">Rice</option>
+      <option value="Wheat">Wheat</option>
+      <option value="Potato">Potato</option>
+      <option value="Tomato">Tomato</option>
+      <option value="Corn">Corn</option>
+      <option value="Barley">Barley</option>
+      <option value="Peas">Peas</option>
+      <option value="Soybean">Soybean</option>
+      <option value="Sugarcane">Sugarcane</option>
+      <option value="Cotton">Cotton</option>
+      <option value="Groundnut">Groundnut</option>
+      <option value="Millet">Millet</option>
+      <option value="Maize">Maize</option>
+    </select>
+
+    <label for="soilType">Soil Type:</label>
+    <select id="soilType">
+      <option value="Clay">Clay</option>
+      <option value="Loam">Loam</option>
+      <option value="Sandy">Sandy</option>
+    </select>
+
+    <label for="season">Season:</label>
+    <select id="season">
+      <option value="Kharif">Kharif</option>
+      <option value="Rabi">Rabi</option>
+    </select>
+
+    <button onclick="getRecommendation()">Get Recommendation</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script src="cropRotation.js"></script>
+</body>
+</html>
