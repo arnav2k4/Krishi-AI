@@ -1,5 +1,7 @@
 # Krishi-AI
 
+IMPORTANT: Make sure your have run the server.js file before opening the site
+
 Krishi AI is an intelligent farming assistant that leverages Machine Learning and Web Technologies to help farmers detect crop diseases and get recommendations for crop rotation.
 
 Key Features
