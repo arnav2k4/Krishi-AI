@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Krishi AI Signup</title>
-  <link rel="stylesheet" href="signup.css"/>
+  <link rel="stylesheet" href="./CSS/signup.css"/>
 </head>
 <body>
   <header class="navbar">
@@ -23,21 +23,21 @@
 
   <main class="form-container">
     <h2>Get Started Now</h2>
-    <form class="signup-form">
+    <form class="signup-form" id = "signup-form">
       <label>Name</label>
-      <input type="text" placeholder="Enter your name" required />
+      <input type="text" id = "signup-name" placeholder="Enter your name" required />
 
       <label>Mobile number</label>
-      <input type="tel" placeholder="Enter mobile number" required />
+      <input type="tel" id = "signup-number" placeholder="Enter mobile number" required />
 
       <label>Password</label>
-      <input type="password" placeholder="Enter Password" required />
+      <input type="password" id = "signup-password" placeholder="Enter Password" required />
 
-      <button type="submit">Signup</button>
+      <button type="submit" >Signup</button>
     </form>
     <p>Have an account? <a href="login.html">Sign In</a></p>
   </main>
 
-  <script src = "scriptSignUp.js"></script>
+  <script src = "./JS/scriptSignUp.js"></script>
 </body>
 </html>

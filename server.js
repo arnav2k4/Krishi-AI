@@ -41,99 +41,80 @@ db.connect((err) => {
 });
 
 // Signup Route
+// Fix the signup route
 app.post('/signup', (req, res) => {
     const { name, number, password } = req.body;
 
-    // Check if all fields are provided
     if (!name || !number || !password) {
-        return res.status(400).send('Please provide all fields');
+        return res.status(400).json({ error: 'Please provide all fields' });
     }
 
-    // Check if the mobile number already registered
-    db.query('SELECT * FROM userdata WHERE MobileNumber = ?', [name], (err, results) => {
-        console.log('Checking for existing Mobile Number:', name);
-
-        if (err) throw err;
-        console.log('Results of MobileNumber check:', results);
+    // Check if the name or number already exists
+    db.query('SELECT * FROM userdata WHERE MobileNumber = ?', [number], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+        
         if (results.length > 0) {
-            return res.status(400).send('Mobile Number already registered');
+            return res.status(400).json({ error: 'Mobile Number already registered' });
         }
 
         // Hash the password
         bcrypt.hash(password, 10, (err, hashedPassword) => {
-            if (err) throw err;
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Error hashing password' });
+            }
 
-            // Insert the new user into the database
-            const sql = 'INSERT INTO userdata (name, number, password) VALUES (?, ?, ?)';
+            // Insert the new user
+            const sql = 'INSERT INTO userdata (Name, MobileNumber, Password) VALUES (?, ?, ?)';
             db.query(sql, [name, number, hashedPassword], (err, result) => {
-                if (err) throw err;
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ error: 'Database error' });
+                }
                 res.status(201).json({ message: 'User registered successfully' });
             });
         });
     });
 });
 
+// Fix the login route
 app.post('/login', (req, res) => {
-    db.query('SELECT COUNT(*) AS count FROM userdata', (err, results) => {
-        if (err) throw err;
-        if (results[0].count === 0) {
-            return res.status(400).send('No users registered. Please sign up first.');
-        }
+    const { number, password } = req.body;
 
-        const { name, password } = req.body;
-
-        if (!name || !password) {
-            return res.status(400).send('Please provide both name and password');
-        }
-
-        db.query('SELECT * FROM userdata WHERE name = ?', [name], (err, results) => {
-            if (err) throw err;
-            if (results.length === 0) {
-                return res.status(400).send('Invalid name or password');
-            }
-
-            const user = results[0];
-
-            bcrypt.compare(password, user.password, (err, isMatch) => {
-                if (err) throw err;
-                if (!isMatch) {
-                    return res.status(400).send('Invalid name or password');
-                }
-                
-                res.json({
-                    message: 'Login successful',
-                    name: user.name,
-                    number: user.number
-                });
-            });
-        });
-    });
-});
-
-
-// Clear Users Route
-app.delete('/clear-users', (req, res) => {
-    db.query('DELETE FROM userdata', (err, result) => {
-        console.log('User data cleared, result:', result);
-
-        if (err) {
-            return res.status(500).json({ message: 'Error clearing user data' });
-        }
-        res.status(200).json({ message: 'User data cleared successfully' });
-    });
-});
-
-app.post('/user-finance', (req, res) => {
-    const { fixed_income, variable_income, fixed_expenses, variable_expenses, miscellaneous_expenses, risk_appetite } = req.body;
-
-    if (!fixed_income || !variable_income || !fixed_expenses || !variable_expenses || !miscellaneous_expenses || !risk_appetite) {
-        return res.status(400).send('Please provide all fields');
+    if (!number || !password) {
+        return res.status(400).json({ error: 'Please provide both name and password' });
     }
 
-    const sql = 'INSERT INTO user_finance (fixed_income, variable_income, fixed_expenses, variable_expenses, miscellaneous_expenses, risk_appetite) VALUES (?, ?, ?, ?, ?, ?)';
-    db.query(sql, [fixed_income, variable_income, fixed_expenses, variable_expenses, miscellaneous_expenses, risk_appetite], (err, result) => {
-        if (err) return res.status(500).send('Database error');
-        res.status(201).json({ message: 'Financial data saved successfully' });
+    db.query('SELECT * FROM userdata WHERE MobileNumber = ?', [number], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+        
+        if (results.length === 0) {
+            return res.status(400).json({ error: 'Invalid number or password' });
+        }
+
+        const user = results[0];
+        bcrypt.compare(password, user.Password, (err, isMatch) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Server error' });
+            }
+            
+            if (!isMatch) {
+                return res.status(400).json({ error: 'Invalid number or password' });
+            }
+            
+            res.json({
+                message: 'Login successful',
+                name: user.name,
+                number: user.MobileNumber
+            });
+        });
     });
 });
 
